@@ -1,6 +1,8 @@
 Picmarks::Application.routes.draw do
   
-  resources :comments
+  post "/comments/:id", :controller => 'Comments', :action => 'create'
+
+  #resources :comments
 
   get  "/pictures" => 'Pictures#index', :as => 'pictures'
 

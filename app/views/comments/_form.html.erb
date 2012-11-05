@@ -1,8 +1,11 @@
-<%= form_for(@comment) do |f| %>
+<p>
+
+<%= form_for( @comment, :url => create_url(@picture.id), :html => { :method => "post" }      ) do |f| %>
+
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
+          
       <ul>
       <% @comment.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -12,15 +15,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :comment %><br />
+    <%= f.label      :comment %><br />
     <%= f.text_field :comment %>
   </div>
-  <div class="field">
-    <%= f.label :picture_id %><br />
-    <!-- <%= f.number_field :picture_id %> -->
-    <%= f.collection_select :picture_id, Picture.all, :id, :title%>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+</p>
